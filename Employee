@@ -1,0 +1,66 @@
+package designPattern;
+
+public class Employee {
+
+	private String firstName; // required
+	private String lastName;
+
+	@Override
+	public String toString() {
+		return "Employee [firstName=" + firstName + ", lastName=" + lastName + "]";
+	}
+
+	static class EmployeeBuilder {
+
+		private String firstName; // required
+		private String lastName;
+
+		public EmployeeBuilder(String firstName, String lastName) {
+			super();
+			this.firstName = firstName;
+			this.lastName = lastName;
+		}
+
+		/**
+		 * @return the firstName
+		 */
+		public String getFirstName() {
+			return firstName;
+		}
+
+		/**
+		 * @param firstName the firstName to set
+		 */
+		public void setFirstName(String firstName) {
+			this.firstName = firstName;
+		}
+
+		/**
+		 * @return the lastName
+		 */
+		public String getLastName() {
+			return lastName;
+		}
+
+		/**
+		 * @param lastName the lastName to set
+		 */
+		public void setLastName(String lastName) {
+			this.lastName = lastName;
+		}
+
+		public Employee build() {
+			// call the private constructor in the outer class
+			return new Employee(this);
+		}
+
+	}
+
+	private Employee(EmployeeBuilder e) {
+		this.firstName = e.firstName;
+		this.lastName = e.lastName;
+
+	}
+
+	
+}
