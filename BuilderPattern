@@ -1,0 +1,12 @@
+package designPattern;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class MainBuilder {
+	public static void main(String a[]) {
+		Employee employee = new Employee.EmployeeBuilder("Princy", "Sahu").build();
+		System.out.println(employee.toString());
+		ExecutorService e= Executors.newFixedThreadPool(4);
+	}
+}
