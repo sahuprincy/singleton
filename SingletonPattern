@@ -1,0 +1,30 @@
+package designPattern;
+
+public class SingletonPattern {
+	private static SingletonPattern instance = null;
+
+	private SingletonPattern() {
+
+	}
+
+	public static SingletonPattern getInstance() {
+
+		if (instance == null) {
+			synchronized (SingletonPattern.class) {
+				if (instance == null) {
+					instance = new SingletonPattern();
+
+				}
+			}
+		}
+		return instance;
+	}
+
+	public static void main(String[] args) {
+    SingletonPattern instance2 = SingletonPattern.getInstance();
+		System.out.println(instance2.hashCode());
+		SingletonPattern instance3 = SingletonPattern.getInstance();
+		System.out.println(instance3.hashCode());
+	}
+
+}
